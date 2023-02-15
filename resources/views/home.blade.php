@@ -5,7 +5,7 @@
 
 @section('content')
 
-                <div>{{ __('Tableau de bord') }}</div>
+                <!--div>{{ __('') }}</div-->
 
 
 
@@ -69,14 +69,8 @@
         </section>
 
   @else
-
  
-
-
-
-
-
-
+<section class="container">
 
 @foreach($users as $user)
 
@@ -142,10 +136,13 @@
 
 
 
-                                  <div class="form-group col-md-5 {{ $errors->has('adresse') ? 'has-error':'' }}">
-                                    <input name="adresse" value="<?= Auth::user()->adresse ?>" type="text" id="email" class="form-control" required='required'>
-                                    {!! $errors->first('adresse','<span class="help-block" style="color:red">:message</span>') !!}
+                                   <div class="form-group col-md-5 {{ $errors->has('adresse') ? 'has-error':'' }}">
+                                    <label for="adresse" class="control-label">Adresse</label>
+                                    <input name="adresse" value="<?= Auth::user()->phone ?>" type="number" id="adresse" class="form-control" required='required'>
+                                    {!! $errors->first('adresse','<span class="help-block" style="color:red">:adresse</span>') !!}
                                 </div>
+
+
 
 
 
@@ -310,11 +307,6 @@
 
 @endforeach
 
-
-
-     @endif
-
-
                         </div>
                     </div>
                 </section>
@@ -323,39 +315,78 @@
         </div>
     </div>
 
-<!--/section-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</section>
 
 
 
   @endif
 
+@else
+
+<section class="container">
+
+<div class="py-md-5">
+ <div class="heading-section ftco-animate mb-3">
+                    <span class="subheading">Liste des commandes </span>
+   </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">idUsers</th>
+      <th scope="col">Téléphone</th>
+      <th scope="col">adresse</th>
+      <th scope="col">idMenu</th>
+      <th scope="col">prix</th>
+      <th scope="col">action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    @foreach($commande as $commandes)
+    <tr>
+      <th scope="row">{{ $commandes->idCde}}</th>
+
+      @foreach($users as $user)
+
+      @if($commandes->idUsers == $user->id)
+
+      <td>{{ $user->name}}</td>
+
+      @endif
+
+      @endforeach
+
+      <td>{{ $commandes->phone}}</td>
+      <td>{{ $commandes->adresse}}</td>
+
+      @foreach($menu as $menus)
+
+      @if($commandes->idMenu == $menus->idMenu)
+
+      <td>{{ $menus->name}}</td>
+      <td>{{ $menus->price}} £</td>
+
+      @endif
+
+      @endforeach
+
+      <td>
+        
+        <a href="{{ route('suppressionCde', ['idCde' => $commandes->idCde]) }}"><button class="btn btn-danger">Supprimer</button></a>
+      </td>
+    </tr>
+
+    @endforeach
+    
+  </tbody>
+</table>
+<br><br><br><br><br>
+
+</section>
 
 @endif
 

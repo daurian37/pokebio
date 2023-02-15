@@ -62,9 +62,10 @@
           <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="/" class="nav-link">Accueil</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link">A propos</a></li>
+                <li class="nav-item"><a href="{{ route('about') }}" class="nav-link">A propos</a></li>
                 <li class="nav-item"><a href="#menu"class="nav-link">Menu</a></li>
               <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
+               <li class="nav-item"><a href="{{ route('blog') }}" class="nav-link">Blog</a></li>
               <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
@@ -80,10 +81,26 @@
                                 </li>
                             @endif
                         @else
+
+                        @if(Auth::user()->role==0)
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('home') }}">{{ __('Mon profil') }}</a>
+                                </li>
+                        @else
+
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('home') }}">{{ __('suivi commandes') }}</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('home') }}">{{ __('messagerie') }}</a>
+                                </li>
+                        @endif
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
-                                </a>
+                                </a>                          
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -96,7 +113,10 @@
                                         @csrf
                                     </form>
                                 </div>
+                        
                             </li>
+
+
                         @endguest
                     </ul>
             </ul>
