@@ -52,15 +52,17 @@
             </div>
           </div>
     </div>
+
       <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-          <a class="navbar-brand" href="/">Pokebio</a>
+          <a class="navbar-brand" href="/"><img src="{{asset('images/logo.JPG')}}" width="100px" height="100px"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
           </button>
 
           <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
+                 
                 <li class="nav-item active"><a href="/" class="nav-link">Accueil</a></li>
                 <li class="nav-item"><a href="{{ route('about') }}" class="nav-link">A propos</a></li>
                 <li class="nav-item"><a href="#menu"class="nav-link">Menu</a></li>
@@ -86,6 +88,10 @@
                         <li class="nav-item">
                                     <a class="nav-link" href="{{ route('home') }}">{{ __('Mon profil') }}</a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('mescommandes') }}">{{ __('Mes commandes') }}</a>
+                                </li>
                         @else
 
                         <li class="nav-item">
@@ -93,7 +99,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('home') }}">{{ __('messagerie') }}</a>
+                                    <a class="nav-link" href="{{ route('messagerie') }}">{{ __('messagerie') }}</a>
                                 </li>
                         @endif
 

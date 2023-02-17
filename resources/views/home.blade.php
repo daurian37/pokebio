@@ -105,9 +105,8 @@
 
                                @php
 
-                                   $Rand = substr(uniqid('', true), -6);
                                    $date = date('Y-m-d');
-                                    $statut=0;
+                                    
                                @endphp
 
 
@@ -186,9 +185,9 @@
 
                                @php
 
-                                   $Rand = substr(uniqid('', true), -6);
+                                   
                                    $date = date('Y-m-d');
-                                    $statut=0;
+                                   
                                @endphp
 
 
@@ -253,9 +252,9 @@
 
                                @php
 
-                                   $Rand = substr(uniqid('', true), -6);
+              
                                    $date = date('Y-m-d');
-                                    $statut=0;
+                                   
                                @endphp
 
 
@@ -346,7 +345,10 @@
   </thead>
   <tbody>
 
+                             
     @foreach($commande as $commandes)
+
+
     <tr>
       <th scope="row">{{ $commandes->idCde}}</th>
 
@@ -379,6 +381,7 @@
         <a href="{{ route('suppressionCde', ['idCde' => $commandes->idCde]) }}"><button class="btn btn-danger">Supprimer</button></a>
       </td>
     </tr>
+  
 
     @endforeach
     

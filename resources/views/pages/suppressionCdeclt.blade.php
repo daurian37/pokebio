@@ -8,11 +8,11 @@
     die('Erreur :' .$e->getMessage());
 }
 
-$del = $bdd->prepare('DELETE FROM contact WHERE idContact = ? LIMIT 1');
-$del->execute(array($_GET['idContact']));
+$del = $bdd->prepare('DELETE FROM commandes WHERE idCde = ? LIMIT 1');
+$del->execute(array($_GET['idCde']));
 
 
- header('Location: messagerie');
+ header('Location: mescommandes');
 
         exit();
 

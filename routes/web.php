@@ -89,11 +89,39 @@ Route::match(['get','post'],'/suppressionCde', function () {
 
 })->name('suppressionCde');
 
+Route::match(['get','post'],'/suppressionMessage', function () {
+
+    return view('pages.suppressionMessage');
+
+})->name('suppressionMessage');
+
 Route::match(['get','post'],'/messagerie', function () {
 
-    $contact = DB::table('menu')->get();
+    $contact = DB::table('contact')->get();
 
     return view('pages.messagerie',['contact'=>$contact]);
 
 })->name('messagerie');
+
+
+Route::match(['get','post'],'/suppressionCdeclt', function () {
+
+    return view('pages.suppressionCdeclt');
+
+})->name('suppressionCdeclt');
+
+Route::match(['get','post'],'/mescommandes', function () {
+
+    $commandes = DB::table('commandes')->get();
+    $menu = DB::table('menu')->get();
+    return view('pages.mescommandes',['commandes'=>$commandes,'menu'=>$menu]);
+
+})->name('mescommandes');
+
+Route::match(['get','post'],'/qrcode', function () {
+
+    
+    return view('pages.qrcode');
+
+})->name('qrcode');
 

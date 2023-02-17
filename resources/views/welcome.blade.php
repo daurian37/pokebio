@@ -11,7 +11,7 @@
 
             <div class="col-md-12 col-sm-12 text-center ftco-animate">
               <h1 class="mb-4 mt-5">Nos délicieuses spécialités</h1>
-              <p><a href="#menu" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Voir nos Menus</a></p>
+              <p><a href="{{ route('qrcode') }}" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Participer au jeu pour une réduction</a></p>
             </div>
 
           </div>
@@ -26,7 +26,7 @@
 
             <div class="col-md-12 col-sm-12 text-center ftco-animate">
               <h1 class="mb-4 mt-5">Une envie subite ?<br>Régalez-vous tout de suite </h1>
-              <p><a href="#menu" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Voir nos Menus</a></p>
+              <p><a href="{{ route('qrcode') }}" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Participer au jeu pour une réduction</a></p>
             </div>
 
           </div>
@@ -35,7 +35,7 @@
     </section>
 
   <br>
-<div style="text-align">
+<div class="container">
   @if(isset($_GET['message']) )
               <div class="alert alert-success" role="alert"> <?= $_GET['message'];?> </div>
     @endif
@@ -151,12 +151,46 @@
             <h2 class="mb-4">Nos Menus</h2>
           </div>
         </div>
-
-
-        
+@if(!isset(Auth::user()->id))
+<div class="alert alert-success" role="alert"> <?= 'veuillez vous authentifier pour pouvoir passer votre commande';?> </div>
+    @endif    
           
          @foreach($menu as $menus)
+
+
+         @if(isset(Auth::user()->id))
+
          <div class="row" style="display: block;">
+
+            <div class="col-md-12">
+
+                <div class="menus d-flex ftco-animate">
+                  <a href="{{ route('home', ['price' => $menus->price, 'idMenu'=>$menus->idMenu ]) }}">
+              <div class="menu-img img" style="background-image: url(images/{{ $menus->image }});"></div></a>
+              <div class="text">
+                <div class="">
+                    <div class="one-half">
+                      <h3>{{ $menus->name }}</h3>
+                    </div>
+                    <div class="one-forth">
+                      <span class="price">{{ $menus->price }} £ </span>
+                    </div>
+                  </div>
+                  <p><span>{{ $menus->composition1 }}</span>, <span>{{ $menus->composition2 }}</span>, <span>{{ $menus->composition3 }}</span>, <span>{{ $menus->composition4 }}</span></p>
+              </div>
+            </div>
+
+
+            </div>
+
+            </div>
+                    
+         </div> 
+
+
+         @else
+
+    <div class="row" style="display: block;">
 
             <div class="col-md-12">
 
@@ -169,7 +203,7 @@
                       <h3>{{ $menus->name }}</h3>
                     </div>
                     <div class="one-forth">
-                      <span class="price"><a href="{{ route('home', ['price' => $menus->price, 'idMenu'=>$menus->idMenu ]) }}">{{ $menus->price }} £ </a></span>
+                      <span class="price">{{ $menus->price }} £ </span>
                     </div>
                   </div>
                   <p><span>{{ $menus->composition1 }}</span>, <span>{{ $menus->composition2 }}</span>, <span>{{ $menus->composition3 }}</span>, <span>{{ $menus->composition4 }}</span></p>
@@ -181,7 +215,11 @@
 
             </div>
                     
-         </div>   
+         </div> 
+
+
+         @endif
+
            @endforeach
 
         
@@ -214,7 +252,7 @@
                         <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                         <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
                         <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        <li class="ftco-animate"><a href="https://www.instagram.com/pokebio6/"><span class="icon-instagram"></span></a></li>
                       </ul>
                   </div>
                             </div>
@@ -233,7 +271,7 @@
                         <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                         <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
                         <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        <li class="ftco-animate"><a href="https://www.instagram.com/pokebio6/"><span class="icon-instagram"></span></a></li>
                       </ul>
                   </div>
                             </div>
