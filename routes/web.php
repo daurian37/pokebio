@@ -72,7 +72,9 @@ Route::match(['get','post'],'/about', function () {
 
 Route::match(['get','post'],'/blog', function () {
 
-    return view('pages.blog');
+    $menu = DB::table('menu')->get();
+
+    return view('pages.blog',['menu' =>$menu]);
 
 })->name('blog');
 
@@ -125,3 +127,9 @@ Route::match(['get','post'],'/qrcode', function () {
 
 })->name('qrcode');
 
+Route::match(['get','post'],'/jeu', function () {
+
+    
+    return view('pages.jeu');
+
+})->name('jeu');

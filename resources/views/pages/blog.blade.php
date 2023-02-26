@@ -17,124 +17,30 @@
 		<section class="ftco-section">
 			<div class="container">
 				<div class="row">
+                                     @php
+                                        $date = date('Y-m-d');
+                                    @endphp
+          @foreach($menu as $menus)
           <div class="col-md-4 ftco-animate">
             <div class="blog-entry">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
+              <a href="blog-single.html" class="block-20" style="background-image: url('images/{{ $menus->image }}');">
               </a>
               <div class="text pt-3 pb-4">
                 <div class="meta">
-                  <div><a href="#">June 25, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
+                  <div><a href="#"><?= $date; ?></a></div>
                 </div>
-                <h3 class="heading"><a href="#">Taste the delicious foods in Asia</a></h3>
+                <h3 class="heading"><a href="#">{{ $menus->name }}</a></h3>
                 <p class="clearfix">
-                  <a href="{{ route('blog-single') }}" class="float-left read">Lire plus</a>
+                  <a href="{{ route('blog-single', ['image' => $menus->image,'name' => $menus->name]) }}" class="float-left read">Lire plus</a>
                   <a href="#" class="float-right meta-chat"><span class="icon-chat"></span> 3</a>
                 </p>
               </div>
             </div>
           </div>
-          <div class="col-md-4 ftco-animate">
-            <div class="blog-entry">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
-              </a>
-              <div class="text pt-3 pb-4">
-                <div class="meta">
-                  <div><a href="#">June 25, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
-                </div>
-                <h3 class="heading"><a href="#">Taste the delicious foods in Asia</a></h3>
-                <p class="clearfix">
-                  <a href="{{ route('blog-single') }}" class="float-left read">Lire plus</a>
-                  <a href="#" class="float-right meta-chat"><span class="icon-chat"></span> 3</a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 ftco-animate">
-            <div class="blog-entry">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
-              </a>
-              <div class="text pt-3 pb-4">
-                <div class="meta">
-                  <div><a href="#">June 25, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
-                </div>
-                <h3 class="heading"><a href="#">Taste the delicious foods in Asia</a></h3>
-                <p class="clearfix">
-                  <a href="{{ route('blog-single') }}" class="float-left read">Lire plus</a>
-                  <a href="#" class="float-right meta-chat"><span class="icon-chat"></span> 3</a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 ftco-animate">
-            <div class="blog-entry">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_4.jpg');">
-              </a>
-              <div class="text pt-3 pb-4">
-                <div class="meta">
-                  <div><a href="#">June 25, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
-                </div>
-                <h3 class="heading"><a href="#">Taste the delicious foods in Asia</a></h3>
-                <p class="clearfix">
-                  <a href="{{ route('blog-single') }}" class="float-left read">Lire plus</a>
-                  <a href="#" class="float-right meta-chat"><span class="icon-chat"></span> 3</a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 ftco-animate">
-            <div class="blog-entry">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_5.jpg');">
-              </a>
-              <div class="text pt-3 pb-4">
-                <div class="meta">
-                  <div><a href="#">June 25, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
-                </div>
-                <h3 class="heading"><a href="#">Taste the delicious foods in Asia</a></h3>
-                <p class="clearfix">
-                  <a href="{{ route('blog-single') }}" class="float-left read">Lire plus</a>
-                  <a href="#" class="float-right meta-chat"><span class="icon-chat"></span> 3</a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 ftco-animate">
-            <div class="blog-entry">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_6.jpg');">
-              </a>
-              <div class="text pt-3 pb-4">
-                <div class="meta">
-                  <div><a href="#">June 25, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
-                </div>
-                <h3 class="heading"><a href="#">Taste the delicious foods in Asia</a></h3>
-                <p class="clearfix">
-                  <a href="{{ route('blog-single') }}" class="float-left read">Lire plus</a>
-                  <a href="#" class="float-right meta-chat"><span class="icon-chat"></span> 3</a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row no-gutters my-5">
-          <div class="col text-center">
-            <div class="block-27">
-              <ul>
-                <li><a href="#">&lt;</a></li>
-                <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&gt;</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+         @endforeach
+          
+          
+        
 			</div>
 		</section>
 

@@ -4,7 +4,7 @@
 
     
     <section class="home-slider owl-carousel js-fullheight">
-      <div class="slider-item js-fullheight" style="background-image: url(images/bg_1.jpg);">
+      <div class="slider-item js-fullheight" style="background-image: url(images/pokebio/2.png);">
         <div class="overlay"></div>
         <div class="container">
           <div class="row slider-text js-fullheight justify-content-center align-items-center" data-scrollax-parent="true">
@@ -19,7 +19,7 @@
       </div>
 
      
-      <div class="slider-item js-fullheight" style="background-image: url(images/bg_3.jpg);">
+      <div class="slider-item js-fullheight" style="background-image: url(images/pokebio/1.png);">
         <div class="overlay"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -143,90 +143,78 @@
             </div>
         </section>
 
-    <section class="ftco-section" id="menu">
-        <div class="container-fluid px-4">
-            <div class="row justify-content-center mb-5 pb-2">
+
+
+
+<section class="ftco-section">
+      <div class="container-fluid px-4">
+        <div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-7 text-center heading-section ftco-animate">
-            <span class="subheading">Spécialités</span>
-            <h2 class="mb-4">Nos Menus</h2>
+            <span class="subheading">Specialités</span>
+            <h2 class="mb-4">Notre Menu</h2>
           </div>
         </div>
-@if(!isset(Auth::user()->id))
-<div class="alert alert-success" role="alert"> <?= 'veuillez vous authentifier pour pouvoir passer votre commande';?> </div>
-    @endif    
-          
-         @foreach($menu as $menus)
 
+        @if(!isset(Auth::user()->id))
+<div class="alert alert-success" role="alert" style="text-align: center;"> <?= 'veuillez vous authentifier pour pouvoir passer votre commande';?> </div>
+    @endif
+        <div class="row">
+          @foreach($menu as $menus)
+          @if(isset(Auth::user()->id))
 
-         @if(isset(Auth::user()->id))
-
-         <div class="row" style="display: block;">
-
-            <div class="col-md-12">
-
-                <div class="menus d-flex ftco-animate">
-                  <a href="{{ route('home', ['price' => $menus->price, 'idMenu'=>$menus->idMenu ]) }}">
-              <div class="menu-img img" style="background-image: url(images/{{ $menus->image }});"></div></a>
+          <div class="col-md-6 col-lg-4 menu-wrap">
+             <a href="{{ route('home', ['price' => $menus->price, 'idMenu'=>$menus->idMenu ]) }}">
+            <div class="menus d-flex ftco-animate">
+             <div class="menu-img img" style="background-image: url(images/{{ $menus->image }});"></div>
               <div class="text">
-                <div class="">
-                    <div class="one-half">
-                      <h3>{{ $menus->name }}</h3>
-                    </div>
-                    <div class="one-forth">
-                      <span class="price">{{ $menus->price }} £ </span>
-                    </div>
+                <div class="d-flex">
+                  <div class="one-half">
+                    <h3>{{ $menus->name }}</h3>
                   </div>
-                  <p><span>{{ $menus->composition1 }}</span>, <span>{{ $menus->composition2 }}</span>, <span>{{ $menus->composition3 }}</span>, <span>{{ $menus->composition4 }}</span></p>
+                  <div class="one-forth">
+                    <span class="price">{{ $menus->price }} £</span>
+                  </div>
+                </div>
               </div>
             </div>
+            </a>
+          </div>
+
+          @else
 
 
-            </div>
-
-            </div>
-                    
-         </div> 
-
-
-         @else
-
-    <div class="row" style="display: block;">
-
-            <div class="col-md-12">
-
-                <div class="menus d-flex ftco-animate">
-
-              <div class="menu-img img" style="background-image: url(images/{{ $menus->image }});"></div>
+          <div class="col-md-6 col-lg-4 menu-wrap">
+            
+            <div class="menus d-flex ftco-animate">
+             <div class="menu-img img" style="background-image: url(images/{{ $menus->image }});"></div>
               <div class="text">
-                <div class="">
-                    <div class="one-half">
-                      <h3>{{ $menus->name }}</h3>
-                    </div>
-                    <div class="one-forth">
-                      <span class="price">{{ $menus->price }} £ </span>
-                    </div>
+                <div class="d-flex">
+                  <div class="one-half">
+                    <h3>{{ $menus->name }}</h3>
                   </div>
-                  <p><span>{{ $menus->composition1 }}</span>, <span>{{ $menus->composition2 }}</span>, <span>{{ $menus->composition3 }}</span>, <span>{{ $menus->composition4 }}</span></p>
+                  <div class="one-forth">
+                    <span class="price">{{ $menus->price }} £</span>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
 
-
-            </div>
-
-            </div>
-                    
-         </div> 
-
-
-         @endif
-
-           @endforeach
+        @endif
+      @endforeach      
 
         
-            </div>
-
-
+        </div>
+      </div>
     </section>
+
+
+
+
+
+
+
+
 
    
     
@@ -245,13 +233,9 @@
                             <div class="text pt-4">
                                 <h3>Laurent</h3>
                                 <span class="position mb-2">Propriétaire du restaurant</span>
-                                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
                                 <div class="faded">
                                     <!-- <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p> -->
                                     <ul class="ftco-social d-flex">
-                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
                         <li class="ftco-animate"><a href="https://www.instagram.com/pokebio6/"><span class="icon-instagram"></span></a></li>
                       </ul>
                   </div>
@@ -264,13 +248,10 @@
                             <div class="text pt-4">
                                 <h3>Isabelle</h3>
                                 <span class="position mb-2">Chef de cuisine</span>
-                                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                
                                 <div class="faded">
                                     <!-- <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p> -->
                                     <ul class="ftco-social d-flex">
-                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
                         <li class="ftco-animate"><a href="https://www.instagram.com/pokebio6/"><span class="icon-instagram"></span></a></li>
                       </ul>
                   </div>
@@ -282,69 +263,7 @@
                 </div>
             </div>
         </section>
-        
-        <!-- <section class="ftco-section testimony-section" style="background-image: url(images/bg_5.jpg);" data-stellar-background-ratio="0.5"> -->
-        <section class="ftco-section testimony-section img" style="background-image: url(images/bg_5.jpg);">
-            <div class="overlay"></div>
-      <div class="container">
-        <div class="row justify-content-center mb-5">
-          <div class="col-md-7 text-center heading-section ftco-animate">
-            <span class="subheading">Témoignages</span>
-            <h2 class="mb-4">Clients satisfaits</h2>
-          </div>
-        </div>
-        <div class="row ftco-animate justify-content-center">
-          <div class="col-md-12">
-            <div class="carousel-testimony owl-carousel ftco-owl">
-              <div class="item">
-                <div class="testimony-wrap text-center pb-5">
-                  <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text p-3">
-                    <p class="mb-4">Menu excellent et raffiné, livraison rapide, félicitations.Nous les conseillerons à nos amis.</p>
-                    <p class="name">Jason McClean</p>
-                    <span class="position">Client</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap text-center pb-5">
-                  <div class="user-img mb-4" style="background-image: url(images/person_2.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text p-3">
-                    <p class="mb-4">C'était la premiere fois de commander chez vous, mais pas la derniere fois, on mange très bien.</p>
-                    <p class="name">Mark Stevenson</p>
-                    <span class="position">Client</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap text-center pb-5">
-                  <div class="user-img mb-4" style="background-image: url(images/person_3.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text p-3">
-                    <p class="mb-4">Des bons plats délicieux</p>
-                    <p class="name">Art Leonard</p>
-                    <span class="position">Client</span>
-                  </div>
-                </div>
-              </div>
-              
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+
         
         <section class="ftco-section ftco-no-pt ftco-no-pb">
             <div class="container-fluid px-0">
